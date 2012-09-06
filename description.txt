@@ -1,0 +1,27 @@
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+				JBOSS PI DEMO
+
+This file is meant to contain a simple description of this demo. It is important to 
+stress that this demo has to be built as *lightweight* as possible since there is a
+lack of RAM on several of these ARM chips.
+
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+				IMPORTANT POINTS
+
+1) The web-app built has to be deployed to JBoss when it is using the standalone
+script. (standalone.sh or standalone.bat)
+
+2) This app has to contain the distributable tag in web.xml in order to be run on
+several different Pis at the same time and to make use of these boards in a cluster
+environment.
+
+3) This app should be built on a laptop/desktop/more powerful computer and *only*
+the resulting .war file should be moved over to the ARM chip when showing the demo.
+
+4) (Talk about what sort of stuff this app is going to do.)
+
+
