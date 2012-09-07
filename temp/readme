@@ -1,0 +1,8 @@
+after deploy the war, go to this url:
+
+http://localhost:8080/jboss-as-helloworld-mdb/
+
+
+
+
+

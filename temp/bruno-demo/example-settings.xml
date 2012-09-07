@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+  
+  <profiles>
+
+    <!-- Configure the JBoss EAP Maven repository -->
+    <profile>
+      <id>jboss-eap-maven-repository</id>
+      <repositories>
+        <repository>
+          <id>jboss-eap</id>
+          <url>file:///home/howard/Downloads/EAP6/jboss-eap-6.0.0-maven-repository</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>jboss-eap-maven-plugin-repository</id>
+          <url>file:///home/howard/Downloads/EAP6/jboss-eap-6.0.0-maven-repository</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+
+  </profiles>
+
+  <activeProfiles>
+    <!-- Optionally, make the repository active by default -->
+    <activeProfile>jboss-eap-maven-repository</activeProfile>
+  </activeProfiles>
+
+</settings>
