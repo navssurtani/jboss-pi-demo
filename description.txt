@@ -22,6 +22,11 @@ environment.
 3) This app should be built on a laptop/desktop/more powerful computer and *only*
 the resulting .war file should be moved over to the ARM chip when showing the demo.
 
-4) (Talk about what sort of stuff this app is going to do.)
+4) Shell script: the shell script used in order to deploy EAP on each Raspberry can
+be run from any directory. In order to do this, 3 parameters have to be specified to
+the script when calling it. The parameters are as follows:
 
+	Param 1: JBOSS_EAP_HOME - This is the home directory where EAP is installed.
+	Param 2: IP_ADDRESS	- The IP address of the Raspberry Pi on the network.
+	Param 3: NODE_NAME	- The name you wish to give to the server node.
 
