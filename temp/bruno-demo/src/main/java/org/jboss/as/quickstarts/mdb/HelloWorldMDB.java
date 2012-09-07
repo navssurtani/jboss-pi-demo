@@ -17,13 +17,19 @@
 package org.jboss.as.quickstarts.mdb;
 
 import java.util.logging.Logger;
+
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
+import javax.jws.Oneway;
+import javax.jws.WebMethod;
+import javax.jws.WebService;
+import javax.jws.soap.SOAPBinding;
 
+import org.jboss.ws.api.annotation.WebContext;
 
 /**
  * <p>
@@ -34,27 +40,36 @@ import javax.jms.TextMessage;
  * @author Serge Pagop (spagop@redhat.com)
  * 
  */
+@WebService(targetNamespace = "http://org.jboss.ws/samples/jmstransport", serviceName = "JMSService")
+@WebContext(contextRoot = "/jboss-as-helloworld-mdb")
+@SOAPBinding(style = SOAPBinding.Style.RPC)
 @MessageDriven(name = "HelloWorldMDB", activationConfig = {
 		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
 		@ActivationConfigProperty(propertyName = "destination", propertyValue = "queue/HELLOWORLDMDBQueue"),
 		@ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
 public class HelloWorldMDB implements MessageListener {
 
-	private final static Logger LOGGER = Logger.getLogger(HelloWorldMDB.class
-			.toString());
+	private final static Logger LOGGER = Logger.getLogger(HelloWorldMDB.class.toString());
+	
+	@WebMethod
+	public void notifyEndpoint(String textMessage) {
+		//Add what you want to trigger something
+	    LOGGER.info("Webservice endpoint received : " +  textMessage);     
+	}
 
 	/**
 	 * @see MessageListener#onMessage(Message)
 	 */
+	@WebMethod(exclude = true)
 	public void onMessage(Message rcvMessage) {
 		TextMessage msg = null;
 		try {
 			if (rcvMessage instanceof TextMessage) {
 				msg = (TextMessage) rcvMessage;
-				LOGGER.info("Received Message: " + msg.getText());
+				LOGGER.info("Received Message from JMS client: " + msg.getText());
+				
 			} else {
-				LOGGER.warning("Message of wrong type: "
-						+ rcvMessage.getClass().getName());
+				LOGGER.warning("Message of wrong type: " + rcvMessage.getClass().getName());
 			}
 		} catch (JMSException e) {
 			throw new RuntimeException(e);
