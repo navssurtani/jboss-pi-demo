@@ -1,0 +1,24 @@
+how to build it
+
+This comes from quickstarts for EAP6. 
+
+before build, modify example-setting.xml so that the repo url points to your own.
+
+to clean
+
+mvn clean -s ./example-settings.xml
+
+to build:
+
+mvn package -s ./example-settings.xml
+
+to deploy:
+
+mvn jboss-as:deploy -s ./example-settings.xml
+
+note: you may need to set JBOSS_HOME before deploy
+
+to undeploy:
+
+mvn jboss-as:undeploy -s ./example-settings.xml
+
