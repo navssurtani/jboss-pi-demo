@@ -22,3 +22,11 @@ to undeploy:
 
 mvn jboss-as:undeploy -s ./example-settings.xml
 
+
+to test the webservice endpoint:
+ 
+python ./bin/send_soapmsg.py
+
+The webservice address:http://localhost:8080/jboss-as-helloworld-mdb/JMSService
+The wsdl url:http://localhost:8080/jboss-as-helloworld-mdb/JMSService?wsdl
+
